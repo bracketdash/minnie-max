@@ -52,3 +52,8 @@ Sets the search depth (must be > 0) and stores it in `localStorage`. Returns the
 ### `getScoredMoves(state, player): Array<{ move, score }>`
 
 Returns an array of all legal moves from the given state and player and each move's score.
+
+## Example Projects
+
+- [Mancala Helper](https://github.com/bracketdash/mancala-helper)
+- [Squadro Helper](https://github.com/bracketdash/squadro)
