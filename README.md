@@ -1,6 +1,6 @@
 # MinnieMax
 
-A minimalist minimax algorithm for JavaScript that works with any 2-player deterministic game.
+A minimalist JavaScript utility framework for 2-player deterministic games.
 
 ![Minnie Max](./logo.png)
 
@@ -10,35 +10,47 @@ A minimalist minimax algorithm for JavaScript that works with any 2-player deter
 
 **Config object properties:**
 
-- `applyMove(state, move)`:  
-  Required. Returns a new state after applying the move.
+- `el`:  
+  Required. Mounting element for the control bar.
 
-- `generateMoves(state, player)`:  
+- `localStorageKey`:  
+  Required. Key to use for localStorage.
+
+- `initialMovesAhead`:  
+  Required. Number of moves to simulate in the minimax search.
+
+- `initialState`:  
+  Required. The initial game state.
+
+- `getMoves({ minnie, state, player })`:  
   Required. Returns an array of all legal moves for the given player and state.
 
-- `evaluate(state, player, depthRemaining)`:  
-  Required. Returns a numeric score for the given state from the perspective of the specified player.
+- `getNextState({ minnie, state, player, move })`:  
+  Required. Returns a new `{ state, player }` after applying the move.
 
-- `isGameOver(state)`:  
+- `getStateScore({ minnie, state, player, movesRemaining })`:  
+  Required. Returns a numeric score for the given state from the perspective of the given player.
+
+- `isGameOver({ minnie, state })`:  
   Required. Returns `true` if the game is over in the given state.
 
-- `depth`:  
-  Required. Number of plies (half-moves) to simulate in the minimax search.
+- `onChange({ minnie })`:  
+  Optional. Fires after a change to `movesAhead` or the game state.
 
-- `getPlayerFromState`:  
-  Optional (`false` by default). If `true`, MinnieMax will read `state.player` from `applyMove()` to determine who moves next. If `false`, it assumes a strict 2-player turn alternation.
+- `onReady({ minnie })`:  
+  Optional. Fires after the control bar has been mounted.
 
-### `getDepth(): number`
+### `getScoredMoves(state, player): Promise<Array<{ move, score }>>`
 
-Returns the current search depth.
+Returns a Promise that resolves to an array of all legal moves for the given state and player, each paired with a numeric score. The returned array is sorted in descending order of score (best moves first).
 
-### `setDepth(depth: number): number`
+### `getState(): { state, player }`
 
-Sets the search depth (must be > 0) and stores it in `localStorage`. Returns the new depth.
+Returns the current game state.
 
-### `getScoredMoves(state, player): Array<{ move, score }>`
+### `pushState(state, player)`
 
-Returns an array of all legal moves from the given state and player and each move's score.
+Adds the given state and player to the game history and stores it in `localStorage`.
 
 ## Example Projects
 
