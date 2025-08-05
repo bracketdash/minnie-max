@@ -79,12 +79,14 @@ class MinnieMax {
                     state: nextState,
                     player,
                     movesRemaining: movesRemaining - 1,
+                    currPlayer,
                   });
                   const oppScore = this.getStateScore({
                     minnie: this,
                     state: nextState,
                     player: player === 1 ? 2 : 1,
                     movesRemaining: movesRemaining - 1,
+                    currPlayer,
                   });
                   leafScores.push(myScore - oppScore);
                 } else {

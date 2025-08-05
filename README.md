@@ -28,7 +28,7 @@ A minimalist JavaScript utility framework for 2-player deterministic games.
 - `getNextState({ minnie, state, player, move })`:  
   Required. Returns a new `{ state, player }` after applying the move.
 
-- `getStateScore({ minnie, state, player, movesRemaining })`:  
+- `getStateScore({ minnie, state, player, movesRemaining, currPlayer })`:  
   Required. Returns a numeric score for the given state from the perspective of the given player.
 
 - `isGameOver({ minnie, state })`:  
@@ -57,3 +57,4 @@ Adds the given state and player to the game history and stores it in `localStora
 - [Boop Helper](https://github.com/bracketdash/boop)
 - [Mancala Helper](https://github.com/bracketdash/mancala-helper)
 - [Squadro Helper](https://github.com/bracketdash/squadro)
+- [Quarto Helper](https://github.com/bracketdash/quarto)
